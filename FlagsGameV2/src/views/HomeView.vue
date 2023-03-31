@@ -1,6 +1,6 @@
 <template>
   <div class="container_homePage">
-    <h2 class="game_menu">Chercher le nom des drapeaux du monde entier</h2>
+    <h2 class="game_menu">Chercher le nom des drapeaux des pays du monde entier</h2>
     <img
       class="background_img"
       src="https://media.istockphoto.com/id/492528693/fr/photo/domaine-de-leurope-la-nuit.jpg?s=612x612&w=0&k=20&c=Ua5kSJPvLb-pFae_6jd3-FyNTHNWaoQcT0-PXbXIOiA="
@@ -69,12 +69,13 @@ button {
 }
 .game_menu {
   font-family: poppins;
-  font-size: 45px;
-  color: rgb(255, 255, 255);
-  background-color: black;
+  font-size: 40px;
+  color: white;
   position: absolute;
   top: 80px;
   left: 120px;
+  width: 190px;
+  text-shadow: 0 0 5px #fff, 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #ff00de, 0 0 0px #ff00de;
 }
 .container_homePage {
   position: relative;
