@@ -1,8 +1,6 @@
 <template>
   <div class="container_homePage">
-    <div class="menu">
-      <h2 class="game_menu">Chercher le nom des drapeaux du monde entier</h2>
-    </div>
+    <h2 class="game_menu">Chercher le nom des drapeaux du monde entier</h2>
     <img
       class="background_img"
       src="https://media.istockphoto.com/id/492528693/fr/photo/domaine-de-leurope-la-nuit.jpg?s=612x612&w=0&k=20&c=Ua5kSJPvLb-pFae_6jd3-FyNTHNWaoQcT0-PXbXIOiA="
@@ -19,25 +17,25 @@
   </div> -->
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
   data() {
     return {
-      flags: [],
-    };
+      flags: []
+    }
   },
   mounted() {
     axios
-      .get("https://restcountries.com/v3.1/all")
+      .get('https://restcountries.com/v3.1/all')
       .then((response) => {
-        this.flags = response.data;
-        console.log(this.flags);
+        this.flags = response.data
+        console.log(this.flags)
       })
       .catch((error) => {
-        console.log(error);
-      });
-  },
-};
+        console.log(error)
+      })
+  }
+}
 </script>
 <style>
 .container_flags {
@@ -69,20 +67,14 @@ button {
   width: 100%;
   /* opacity: 0.9; */
 }
-.menu {
-  height: 300px;
-  width: 100%;
-  position: absolute;
-  top: 80px;
-  left: 120px;
-  opacity: 0.7;
-  border-radius: 20px;
-}
 .game_menu {
   font-family: poppins;
   font-size: 45px;
   color: rgb(255, 255, 255);
   background-color: black;
+  position: absolute;
+  top: 80px;
+  left: 120px;
 }
 .container_homePage {
   position: relative;
