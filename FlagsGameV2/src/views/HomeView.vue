@@ -1,6 +1,6 @@
 <template>
   <div class="container_homePage">
-    <h2 class="game_menu">Chercher le nom des drapeaux des pays du monde entier</h2>
+    <h2 class="game_menu">Cherchez le nom des drapeaux des pays du monde entier!</h2>
     <img
       class="background_img"
       src="https://media.istockphoto.com/id/492528693/fr/photo/domaine-de-leurope-la-nuit.jpg?s=612x612&w=0&k=20&c=Ua5kSJPvLb-pFae_6jd3-FyNTHNWaoQcT0-PXbXIOiA="
@@ -65,17 +65,26 @@ button {
 .background_img {
   height: 100vh;
   width: 100%;
-  /* opacity: 0.9; */
 }
 .game_menu {
+  width: 200px;
   font-family: poppins;
-  font-size: 40px;
-  color: white;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
   position: absolute;
-  top: 80px;
-  left: 120px;
-  width: 190px;
-  text-shadow: 0 0 5px #fff, 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #ff00de, 0 0 0px #ff00de;
+  top: 50px;
+  left: 100px;
+  text-shadow: 
+  0px 0px 10px #ffffff,
+   0px 0px 42px #fff,
+    0px 0px 77px #a9a9f6,
+      0px 0px 100px #3e75f6;
+      /* background-size: cover;
+      background-position: center;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTixK_AMiyslawcC7dmv2_9swZqpcdxnkDsw&usqp=CAU");
+} */
 }
 .container_homePage {
   position: relative;

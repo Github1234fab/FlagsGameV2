@@ -12,8 +12,8 @@
 <style>
 .header {
   width: 100%;
-  height: 90px;
-  background-color: rgb(141, 141, 163);
+  height: 60px;
+  background-color: rgb(81, 81, 101);
   display: flex;
   justify-content: space-between;
   align-items: center;
