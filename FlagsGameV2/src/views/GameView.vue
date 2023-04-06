@@ -173,29 +173,13 @@ export default {
         })
     }
   }
-  // mounted() {
-  //   axios
-  //     .get(this.url)
-  //     .then((response) => {
-  //       this.flag = response.data
-  //       console.log(this.flag)
-  //       this.oneflag()
-  //       this.randomNameOne()
-  //       this.randomNameTwo()
-  //       this.quizz()
-  //       this.shuffle()
-  //       this.gamePart()
-  //       this.reload()
-  //       this.findUrl()
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  // }
 }
 </script>
 
 <style>
+.container_game {
+  background: url('../assets/DALL·E 2023-04-06 15.02.59 - icon de drapeaux mondial qui flotte au vent.png');
+}
 .container_counter {
   height: 100px;
   width: 350px;
@@ -219,6 +203,34 @@ export default {
   align-content: center;
   justify-content: center;
 }
+.container_gamer {
+
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to left, rgb(214, 215, 186), 20%, rgb(138, 138, 21));
+  /* background:linear-gradient(to left, rgb(235, 235, 239), 30% ,  rgb(128, 118, 118)); */
+
+  align-items: center;
+  align-content: center;
+  border-radius: 15px;
+}
+.container_Gaming {
+  height: 100%;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+}
+.container_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 .counter {
   font-size: 18px;
   color: rgb(236, 230, 230);
@@ -237,14 +249,11 @@ export default {
   text-align: center;
   margin-top: 20px;
 }
-.container_gamer {
-  margin-top: 20px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+
 .question {
   font-size: 18px;
+  color: white;
+  margin-top: 20px;
 }
 .game_starter {
   height: 70px;
@@ -258,8 +267,8 @@ export default {
   height: 150px;
   width: 180px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
-  border-radius: 5px;
-  margin: 25px 30px 15px 30px;
+  border-radius: 2px;
+  margin-bottom: 20px;
 }
 .input {
   border: none;
@@ -269,8 +278,8 @@ export default {
 .countries_names {
   color: rgb(1, 1, 72);
   box-shadow: 1px 1px 4px 0px rgb(69, 64, 64) inset;
-  background: linear-gradient(rgb(249, 249, 249), rgb(217, 214, 214));
-  width: 200px;
+  background: linear-gradient(rgb(249, 249, 249), rgb(237, 229, 229));
+  width: 180px;
   text-align: center;
   padding: 10px;
   margin-bottom: 5px;
@@ -290,20 +299,6 @@ export default {
 .clicked-wrong {
   background: linear-gradient(rgb(242, 43, 43), rgb(229, 115, 115));
   color: rgb(255, 255, 255);
-}
-.container_Gaming {
-  height: 100%;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: space-around;
-}
-.container_div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .next {
   background-color: rgb(217, 217, 40);
@@ -346,7 +341,8 @@ export default {
   transition: visibility 2s ease-in;
 }
 .table_board {
-  background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70));
+  background: linear-gradient(to left, rgb(235, 235, 239), 30%, rgb(128, 118, 118));
+  /* background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70)); */
   display: flex;
   flex-direction: column;
   align-content: center;
