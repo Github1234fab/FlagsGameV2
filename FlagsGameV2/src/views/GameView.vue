@@ -2,7 +2,7 @@
   <div class="container_game">
     <div class="table_board">
       <h1>Tableau de bord</h1>
-      <div class="themes">
+    <div class="themes">
         <span class="continent">Europe <input @click="findUrl(0)" type="radio" /></span>
         <span class="continent">Asie <input @click="findUrl(2)" type="radio" /></span>
         <span class="continent">Amérique<input @click="findUrl(3)" type="radio" /></span>
@@ -62,9 +62,9 @@ export default {
     }
   },
   methods: {
-    //  récupération des datas.nam et data.flag
+    //  récupération des datas.name et data.flag
     oneflag() {
-      this.flag.map((el) => {
+      this.flag.map(() => {
         const randomIndex = Math.floor(Math.random() * this.flag.length)
         const randomElement = this.flag[randomIndex]
         this.countryName = randomElement.translations.fra.common
@@ -75,7 +75,7 @@ export default {
     },
     //fonction pour obtenir deux noms aléatoires qui seront associés au vrai nom de drapeau.
     randomNameOne() {
-      this.flag.map((el) => {
+      this.flag.map(() => {
         const randomIndex = Math.floor(Math.random() * this.flag.length)
         const randomElement = this.flag[randomIndex]
         // const randomElements = this.flag.sort(() => 0.5 - Math.random()).slice(0, 1)
@@ -84,7 +84,7 @@ export default {
       })
     },
     randomNameTwo() {
-      this.flag.map((el) => {
+      this.flag.map(() => {
         const randomIndex = Math.floor(Math.random() * this.flag.length)
         const randomElement = this.flag[randomIndex]
         // const randomElements = this.flag.sort(() => 0.5 - Math.random()).slice(0, 1)

@@ -1,11 +1,12 @@
 <template>
   <div class="container_homePage">
-    <h2 class="game_menu">Cherchez le nom des drapeaux des pays du monde entier!</h2>
-    <img
-      class="background_img"
-      src="https://media.istockphoto.com/id/492528693/fr/photo/domaine-de-leurope-la-nuit.jpg?s=612x612&w=0&k=20&c=Ua5kSJPvLb-pFae_6jd3-FyNTHNWaoQcT0-PXbXIOiA="
-      alt=""
-    />
+    <div class="container_menu">
+     
+         <router-link to="/game" class="game_menu">Quel est le nom de ce drapeau?</router-link>
+      <h2 class="game_menu">Quelle est la capitale de ce pays?</h2>
+      <h2 class="game_menu">Comment s'appellent les habitants de ce pays?</h2>
+      <h2 class="game_menu">Quel est le nom de ce drapeau?</h2>
+    </div>
   </div>
   <!-- <div class="container_flags">
     <div v-for="(infos, index) in flags" :key="index">
@@ -45,8 +46,8 @@ export default {
   justify-content: center;
 }
 .flags {
-  height: 100px;
-  width: 150px;
+  height: 20px;
+  width: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 8px -3px rgb(74, 72, 72);
   opacity: 0.8;
@@ -62,36 +63,30 @@ button {
   height: 100px;
   width: 100px;
 }
-.background_img {
-  height: 100vh;
-  width: 100%;
-}
+
 .game_menu {
   width: 200px;
   font-family: poppins;
-  font-size: 24px;
+  font-size: 18px;
   color: rgb(255, 255, 255);
-  position: absolute;
-  top: 50px;
-  left: 100px;
-  text-shadow: 
-  0px 0px 10px #ffffff,
-   0px 0px 42px #fff,
-    0px 0px 77px #a9a9f6,
-      0px 0px 100px #3e75f6;
-      /* background-size: cover;
-      background-position: center;
-      background-clip: text;
-      -webkit-background-clip: text;
-      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTixK_AMiyslawcC7dmv2_9swZqpcdxnkDsw&usqp=CAU");
-} */
+  text-shadow: 0px 0px 10px #ffffff; 
+}
+a{
+  text-decoration: none;
 }
 .container_homePage {
-  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   width: 100%;
+  background: url('../assets/DALL·E 2023-04-06 15.15.01 - a design of mountains on which are planted all the flags of the world with blue sky.png');
+  background-size: cover;
+}
+.container_menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 300px;
+  margin-top: 50px;
+
 }
 </style>
