@@ -178,7 +178,8 @@ export default {
 
 <style>
 .container_game {
-  background: url('../assets/DALL·E 2023-04-06 15.02.59 - icon de drapeaux mondial qui flotte au vent.png');
+  background: url('../assets/DALL·E 2023-04-06 15.15.09 - a design of mountains on which are planted all the flags of the world with blue sky.png');
+  height: 100vh;
 }
 .container_counter {
   height: 100px;
@@ -204,26 +205,25 @@ export default {
   justify-content: center;
 }
 .container_gamer {
-
   margin-top: 20px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to left, rgb(214, 215, 186), 20%, rgb(138, 138, 21));
+  background: linear-gradient(to left, lightGrey, 10%, rgb(194, 2, 2), lightGrey);
   /* background:linear-gradient(to left, rgb(235, 235, 239), 30% ,  rgb(128, 118, 118)); */
-
   align-items: center;
   align-content: center;
   border-radius: 15px;
 }
 .container_Gaming {
-  height: 100%;
+  margin-top: 25px;
   gap: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: space-around;
+  background-color: blue;
 }
 .container_div {
   display: flex;
@@ -304,7 +304,8 @@ export default {
   background-color: rgb(217, 217, 40);
   color: rgb(1, 1, 72);
   box-shadow: 1px 1px 4px 0px rgb(69, 64, 64) inset;
-  width: 350px;
+  width: 100px;
+  height: 100px;
   text-align: center;
   padding: 10px;
   margin-bottom: 5px;
@@ -341,18 +342,18 @@ export default {
   transition: visibility 2s ease-in;
 }
 .table_board {
-  background: linear-gradient(to left, rgb(235, 235, 239), 30%, rgb(128, 118, 118));
+  background: linear-gradient(to right, transparent, rgb(11, 91, 141), transparent);
   /* background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70)); */
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   height: 130px;
-  width: 600px;
+  width: 900px;
   margin: auto;
   margin-top: 20px;
-  border-radius: 15px;
-  box-shadow: 1px 1px 5px grey;
+  /* border-radius: 15px; */
+  /* box-shadow: 1px 1px 5px grey; */
 }
 .table_board h1 {
   color: white;
