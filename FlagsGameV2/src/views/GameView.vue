@@ -1,8 +1,8 @@
 <template>
   <div class="container_game">
     <div class="table_board">
-      <h1>Tableau de bord</h1>
-    <div class="themes">
+      <h1>Choisis un continent</h1>
+      <div class="themes">
         <span class="continent">Europe <input @click="findUrl(0)" type="radio" /></span>
         <span class="continent">Asie <input @click="findUrl(2)" type="radio" /></span>
         <span class="continent">Amérique<input @click="findUrl(3)" type="radio" /></span>
@@ -24,10 +24,11 @@
             </div>
             <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
           </div>
-          <div ref="suivant" @click="restartGame" class="next">Suivant</div>
         </div>
       </div>
+
       <div class="container_counter" ref="containerCounter">
+        <div ref="suivant" @click="restartGame" class="next">Suivant</div>
         <h3 class="counter_title">Compteur</h3>
         <h3 class="counter">{{ counter }}</h3>
         <p class="resultat" ref="resultat">{{ counter }} points sur 5.</p>
@@ -210,6 +211,14 @@ export default {
   height: 250px;
   transition: height 0.7s ease-in;
 }
+.container_countries_names {
+  display: flex;
+  height: 50px;
+  gap: 5px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
 .counter {
   font-size: 18px;
   color: rgb(236, 230, 230);
@@ -229,13 +238,10 @@ export default {
   margin-top: 20px;
 }
 .container_gamer {
+  margin-top: 20px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: space-between;
-  height: auto;
-  margin-top: 20px;
 }
 .question {
   font-size: 18px;
@@ -249,12 +255,11 @@ export default {
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64) inset;
 }
 .countryFlag {
-  height: auto;
-  width: 350px;
+  height: 150px;
+  width: 180px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 5px;
-  margin-bottom: 25px;
-  margin-top: 15px;
+  margin: 25px 30px 15px 30px;
 }
 .input {
   border: none;
@@ -265,13 +270,14 @@ export default {
   color: rgb(1, 1, 72);
   box-shadow: 1px 1px 4px 0px rgb(69, 64, 64) inset;
   background: linear-gradient(rgb(249, 249, 249), rgb(217, 214, 214));
-  width: 350px;
+  width: 200px;
   text-align: center;
   padding: 10px;
   margin-bottom: 5px;
   font-size: 14px;
   border-radius: 5px;
   transition: 0.4s ease-in-out;
+  height: 40px;
 }
 .correct {
   background: linear-gradient(rgb(152, 253, 0), rgb(18, 200, 5));
@@ -293,6 +299,11 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: space-around;
+}
+.container_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .next {
   background-color: rgb(217, 217, 40);
@@ -335,13 +346,17 @@ export default {
   transition: visibility 2s ease-in;
 }
 .table_board {
-  background: linear-gradient(rgb(178, 180, 29), rgb(172, 175, 14));
+  background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70));
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  height: 140px;
-  margin-top: 10px;
+  height: 130px;
+  width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px grey;
 }
 .table_board h1 {
   color: white;
