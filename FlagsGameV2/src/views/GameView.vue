@@ -206,11 +206,11 @@ export default {
   justify-content: space-around;
   position: absolute;
   left: 570px;
-  top: 30px;
+  top: 35px;
 }
 
 .container_countries_names {
-  margin-top: 60px;
+  margin-top: 40px;
   display: flex;
   height: 50px;
   gap: 10px;
@@ -277,7 +277,7 @@ export default {
 }
 .countryFlag {
   height: 200px;
-  width: 320px;
+  width: 250px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
@@ -286,7 +286,7 @@ export default {
 }
 .countryFlag_visible {
   height: 200px;
-  width: 300px;
+  width: 250px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
@@ -305,11 +305,10 @@ export default {
   background: linear-gradient(to right, rgb(249, 249, 249), rgb(205, 198, 198));
   width: 180px;
   padding: 10px;
-  margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 15px;
   border-radius: 5px;
   transition: 0.4s ease-in-out;
-  height: 100px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,7 +415,7 @@ export default {
   gap: 10px;
   margin-top: 10px;
    position: absolute;
-   top: 370px;
+   top: 340px;
  left: 700px;
 }
 .arrow {
