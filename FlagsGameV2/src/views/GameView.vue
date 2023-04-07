@@ -14,16 +14,18 @@
       <div class="container_gamer">
 
         <div class="container_counter" ref="containerCounter">
-          <h3 class="counter_title">Compteur</h3>
+          <h3 class="counter_title"></h3>
           <h3 class="counter">{{ counter }}</h3>
           <p class="resultat" ref="resultat">{{ counter }} points sur 5.</p>
           <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
         </div>
 
-        <h3 class="question">À quel pays appartient ce drapeau?</h3>
+     
         <div class="container_div">
-          <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" />
+          <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag"/>
+             <h3 class="question">À quel pays appartient ce drapeau?</h3>
           <div class="container_countries_names" ref="containerQuestionRandom">
+          
             <div @click="reponse" class="countries_names" ref="divRedOne">
               {{ dataNameRandomOne }}
             </div>
@@ -74,6 +76,7 @@ export default {
         this.countryFlag = randomElement.flags.png
         console.log(this.countryName)
         console.log(this.countryFlag)
+    
       })
     },
     //fonction pour obtenir deux noms aléatoires qui seront associés au vrai nom de drapeau...................
@@ -159,6 +162,8 @@ export default {
       this.urlSelected = dataUrl[index]
       console.log(this.urlSelected)
       this.fetchData()
+      this.$refs.flag.classList.add('countryFlag_visible')
+      console.log("ok");
     },
     fetchData() {
       axios
@@ -185,37 +190,34 @@ export default {
 <style>
 .container_game {
   background: url('../assets/DALL·E 2023-04-06 15.15.09 - a design of mountains on which are planted all the flags of the world with blue sky.png');
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5px;
 }
 .container_counter {
-  height: 100px;
+  height: 200px;
   width: 250px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
+  justify-content: space-around;
   position: absolute;
-  left: 600px;
+  left: 570px;
   top: 30px;
 }
-.container_counter_resultat {
-  height: 250px;
-  transition: height 0.7s ease-in;
-  width: 150px;
-}
+
 .container_countries_names {
-  margin-top: 50px;
+  margin-top: 60px;
   display: flex;
   height: 50px;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
   align-content: center;
   justify-content: center;
+  width: 600px;
 }
 .container_gamer {
   margin-top: 20px;
@@ -231,51 +233,39 @@ export default {
   width: 800px;
   position: relative;
 }
-/* .container_Gaming {
-  margin-top: 25px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: space-around;
-  background-color: blue;
-  height: 600px;
-} */
+
 .container_div {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
 }
-.container_flagAndNext {
-  display: flex;
-  width: 550px;
-  justify-content: space-between;
-}
+
 .counter {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
   color: rgb(236, 230, 230);
-  text-align: center;
-  border: solid 1px grey;
-  margin-bottom: 15px;
+  border: solid 1px rgb(246, 246, 246);
   padding: 10px;
   border-radius: 10px;
   background-color: transparent;
   width: 50px;
   height: 50px;
+  padding: 20px;
 }
 .counter_title {
   color: rgb(243, 244, 239);
   font-size: 15px;
   text-align: center;
-  margin-top: 20px;
 }
 
 .question {
   font-size: 18px;
   color: white;
   margin-top: 20px;
+  text-transform: uppercase;
 }
 .game_starter {
   height: 70px;
@@ -291,6 +281,17 @@ export default {
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
+  margin-top: 20px;
+  visibility: hidden;
+}
+.countryFlag_visible {
+  height: 200px;
+  width: 300px;
+  box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  visibility: visible;
 }
 .input {
   border: none;
@@ -305,7 +306,7 @@ export default {
   width: 180px;
   padding: 10px;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 5px;
   transition: 0.4s ease-in-out;
   height: 100px;
@@ -315,11 +316,13 @@ export default {
 }
 .correct {
   background: linear-gradient(rgb(152, 253, 0), rgb(18, 200, 5));
+  box-shadow: 1px 1px 3px rgb(39, 38, 38);
   color: rgb(255, 255, 255);
 }
 .incorrect {
   background: linear-gradient(rgb(236, 43, 43), rgb(231, 36, 36));
   color: white;
+  box-shadow: 1px 1px 3px rgb(39, 38, 38);
 }
 .clicked-wrong {
   background: linear-gradient(rgb(242, 43, 43), rgb(229, 115, 115));
@@ -349,13 +352,14 @@ export default {
 }
 .new_game_visible{
   visibility: visible;
-  background-color: blue;
-  color: rgb(242, 191, 191);
+  background-color: rgb(38, 38, 80);
+  color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 1px 1px 4px 0px rgb(4, 4, 4);
   height: 60px;
   border: none;
   transition: visibility 2s ease-in;
+  font-size: 22px;
 }
 .table_board {
   background: linear-gradient(to left, transparent, rgb(11, 91, 141), transparent);
@@ -412,7 +416,7 @@ export default {
   gap: 10px;
   margin-top: 10px;
    position: absolute;
-   top: 330px;
+   top: 370px;
  left: 700px;
 }
 .arrow {
