@@ -12,6 +12,14 @@
     </div>
     <div class="container_Gaming">
       <div class="container_gamer">
+
+        <div class="container_counter" ref="containerCounter">
+          <h3 class="counter_title">Compteur</h3>
+          <h3 class="counter">{{ counter }}</h3>
+          <p class="resultat" ref="resultat">{{ counter }} points sur 5.</p>
+          <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
+        </div>
+
         <h3 class="question">À quel pays appartient ce drapeau?</h3>
         <div class="container_div">
           <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" />
@@ -24,15 +32,9 @@
             </div>
             <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
           </div>
+           <div ref="suivant" @click="restartGame" class="next"><i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
+            </div>
         </div>
-      </div>
-
-      <div class="container_counter" ref="containerCounter">
-        <div ref="suivant" @click="restartGame" class="next">Suivant</div>
-        <h3 class="counter_title">Compteur</h3>
-        <h3 class="counter">{{ counter }}</h3>
-        <p class="resultat" ref="resultat">{{ counter }} points sur 5.</p>
-        <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
       </div>
     </div>
   </div>
@@ -74,7 +76,8 @@ export default {
         console.log(this.countryFlag)
       })
     },
-    //fonction pour obtenir deux noms aléatoires qui seront associés au vrai nom de drapeau.
+    //fonction pour obtenir deux noms aléatoires qui seront associés au vrai nom de drapeau...................
+
     randomNameOne() {
       this.flag.map(() => {
         const randomIndex = Math.floor(Math.random() * this.flag.length)
@@ -93,22 +96,25 @@ export default {
         console.log(this.dataNameRandomTwo)
       })
     },
-    //  comportement des classes (chgmt couleur) suite à la réponse du User
+    //  comportement des classes (chgmt couleur) suite à la réponse du User.................................
+
     reponse(event) {
       this.$refs.divGreen.classList.add('correct')
       this.$refs.divRedOne.classList.add('incorrect')
       this.$refs.divRedTwo.classList.add('incorrect')
       if (event.target.textContent == this.countryName) this.counter++
-      //incrémenter à chaque clique des trois divs questions pour déterminer le nombre de coups par partie.
+
+      //incrémenter à chaque clique des trois divs questions pour déterminer le nombre de coups par partie.......................................
+
       console.log('ok')
       this.gamePart++
       console.log(this.gamePart)
-      if (this.gamePart == 5) {
+      if (this.gamePart == 10) {
         console.log('Tu as fait une partie en 5')
         this.$refs.divGreen.classList.add('disabled')
         this.$refs.divRedOne.classList.add('disabled')
         this.$refs.divRedTwo.classList.add('disabled')
-        this.$refs.resultat.classList.add('resultat_visible')
+        // this.$refs.resultat.classList.add('resultat_visible')
         this.$refs.newGame.classList.add('new_game_visible')
         this.$refs.containerCounter.classList.add('container_counter_resultat')
         this.$refs.suivant.classList.add('disabled')
@@ -137,7 +143,7 @@ export default {
       this.$refs.divRedOne.classList.remove('disabled')
       this.$refs.divRedTwo.classList.remove('disabled')
       this.$refs.suivant.classList.remove('disabled')
-      this.$refs.resultat.classList.remove('resultat_visible')
+      // this.$refs.resultat.classList.remove('resultat_visible')
       this.$refs.newGame.classList.remove('new_game_visible')
       this.$refs.containerCounter.classList.remove('container_counter_resultat')
     },
@@ -179,24 +185,31 @@ export default {
 <style>
 .container_game {
   background: url('../assets/DALL·E 2023-04-06 15.15.09 - a design of mountains on which are planted all the flags of the world with blue sky.png');
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
 }
 .container_counter {
   height: 100px;
-  width: 350px;
-  background-color: rgb(15, 105, 36);
-  box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
+  width: 250px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
+  position: absolute;
+  left: 600px;
+  top: 30px;
 }
 .container_counter_resultat {
   height: 250px;
   transition: height 0.7s ease-in;
+  width: 150px;
 }
 .container_countries_names {
+  margin-top: 50px;
   display: flex;
   height: 50px;
   gap: 5px;
@@ -214,8 +227,11 @@ export default {
   align-items: center;
   align-content: center;
   border-radius: 15px;
+  height: 480px;
+  width: 800px;
+  position: relative;
 }
-.container_Gaming {
+/* .container_Gaming {
   margin-top: 25px;
   gap: 10px;
   display: flex;
@@ -224,12 +240,18 @@ export default {
   align-content: center;
   justify-content: space-around;
   background-color: blue;
-}
+  height: 600px;
+} */
 .container_div {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+}
+.container_flagAndNext {
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
 }
 .counter {
   font-size: 18px;
@@ -264,8 +286,8 @@ export default {
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64) inset;
 }
 .countryFlag {
-  height: 150px;
-  width: 180px;
+  height: 200px;
+  width: 320px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
@@ -277,16 +299,19 @@ export default {
 }
 .countries_names {
   color: rgb(1, 1, 72);
-  box-shadow: 1px 1px 4px 0px rgb(69, 64, 64) inset;
-  background: linear-gradient(rgb(249, 249, 249), rgb(237, 229, 229));
+  box-shadow: 4px -4px 20px 0px rgb(230, 229, 236) inset, -4px 4px 20px 0px rgb(228, 227, 234) inset,
+    2px 2px 4px rgb(26, 25, 25);
+  background: linear-gradient(to right, rgb(249, 249, 249), rgb(205, 198, 198));
   width: 180px;
-  text-align: center;
   padding: 10px;
   margin-bottom: 5px;
   font-size: 14px;
   border-radius: 5px;
   transition: 0.4s ease-in-out;
-  height: 40px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .correct {
   background: linear-gradient(rgb(152, 253, 0), rgb(18, 200, 5));
@@ -300,40 +325,31 @@ export default {
   background: linear-gradient(rgb(242, 43, 43), rgb(229, 115, 115));
   color: rgb(255, 255, 255);
 }
-.next {
-  background-color: rgb(217, 217, 40);
-  color: rgb(1, 1, 72);
-  box-shadow: 1px 1px 4px 0px rgb(69, 64, 64) inset;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 5px;
-  font-size: 14px;
-  border-radius: 5px;
-  transition: 0.4s ease-in-out;
-}
+
 .disabled {
   pointer-events: none;
 }
 .abled {
   pointer-events: all;
 }
-.resultat {
+/* .resultat {
   visibility: hidden;
-}
-.new_game {
+} */
+/* .new_game {
   visibility: hidden;
-}
-.resultat_visible {
+} */
+.resultat{
   visibility: visible;
   color: white;
   margin-top: 10px;
   transition: visibility2s ease-in;
 }
-.new_game_visible {
+.new_game{
+  visibility: hidden;
+}
+.new_game_visible{
   visibility: visible;
-  background-color: transparent;
+  background-color: blue;
   color: rgb(242, 191, 191);
   border-radius: 10px;
   box-shadow: 1px 1px 4px 0px rgb(4, 4, 4);
@@ -342,23 +358,23 @@ export default {
   transition: visibility 2s ease-in;
 }
 .table_board {
-  background: linear-gradient(to right, transparent, rgb(11, 91, 141), transparent);
+  background: linear-gradient(to left, transparent, rgb(11, 91, 141), transparent);
   /* background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70)); */
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  height: 130px;
+  justify-content: space-around;
+  height: 120px;
   width: 900px;
-  margin: auto;
-  margin-top: 20px;
+  padding: 20px;
   /* border-radius: 15px; */
   /* box-shadow: 1px 1px 5px grey; */
 }
 .table_board h1 {
   color: white;
   font-size: 18px;
-  margin-top: 20px;
+  text-transform: uppercase;
 }
 .themes {
   height: 200px;
@@ -378,5 +394,29 @@ export default {
   flex-direction: column;
   align-items: center;
   align-content: center;
+}
+.next {
+  color: rgb(255, 255, 255);
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  border-radius: 50%;
+  border: 1px solid white;
+  transition: 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+   position: absolute;
+   top: 330px;
+ left: 700px;
+}
+.arrow {
+ color: white;
+
 }
 </style>
