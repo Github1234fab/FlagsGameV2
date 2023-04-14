@@ -8,11 +8,11 @@
         <span class="continent">Amérique<input @click="findUrl(2)" type="radio" name="continent"/></span>
         <span class="continent">Afrique <input @click="findUrl(3)" type="radio" name="continent"/></span>
         <span class="continent">Océanie <input @click="findUrl(4)" type="radio" name="continent"/></span>
-         <span class="continent">Monde en entier<input @click="findUrl(5)" type="radio" name="continent"/></span>
+         <span class="continent">Monde<input @click="findUrl(5)" type="radio" name="continent"/></span>
       </div>
     </div>
     <div class="container_Gaming">
-      <div class="container_gamer">
+      <div class="container_gamer" ref="containerGamer">
 
         <div class="container_counter" ref="containerCounter">
           <h3 class="counter_title"></h3>
@@ -165,6 +165,7 @@ export default {
       this.fetchData()
       this.$refs.flag.classList.add('countryFlag_visible')
       console.log("ok");
+      this.$refs.containerGamer.classList.add('container_gamer_visible')
     },
     fetchData() {
       axios
@@ -223,16 +224,20 @@ export default {
   width: 600px;
 }
 .container_gamer {
-  margin-top: 20px;
+  visibility: hidden;
+}
+.container_gamer_visible {
+  visibility: visible;
+   margin-top: 25px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to left, lightGrey, 10%, rgb(194, 2, 2), lightGrey);
+  background: linear-gradient(to left, lightGrey, 10%, rgb(194, 2, 2), 10%,  lightGrey);
   /* background:linear-gradient(to left, rgb(235, 235, 239), 30% ,  rgb(128, 118, 118)); */
   align-items: center;
   align-content: center;
   border-radius: 15px;
-  height: 480px;
+  height: 460px;
   width: 800px;
   position: relative;
 }
@@ -262,13 +267,15 @@ export default {
   color: rgb(243, 244, 239);
   font-size: 15px;
   text-align: center;
+  font-weight: 800;
 }
 
 .question {
   font-size: 18px;
-  color: white;
+  color: rgb(63, 61, 61);
   margin-top: 20px;
   text-transform: uppercase;
+  font-weight: bold;
 }
 .game_starter {
   height: 70px;
@@ -279,8 +286,8 @@ export default {
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64) inset;
 }
 .countryFlag {
-  height: 200px;
-  width: 250px;
+  /* height: 200px;
+  width: 240px; */
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
@@ -289,7 +296,7 @@ export default {
 }
 .countryFlag_visible {
   height: 200px;
-  width: 250px;
+  width: 340px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
@@ -303,10 +310,9 @@ export default {
 }
 .countries_names {
   color: rgb(1, 1, 72);
-  box-shadow: 4px -4px 20px 0px rgb(230, 229, 236) inset, -4px 4px 20px 0px rgb(228, 227, 234) inset,
-    2px 2px 4px rgb(26, 25, 25);
+  box-shadow: 2px 2px 20px 0px rgb(83, 82, 82);
   background: linear-gradient(to right, rgb(249, 249, 249), rgb(205, 198, 198));
-  width: 180px;
+  width: 300px;
   padding: 10px;
   font-size: 15px;
   border-radius: 5px;
@@ -381,8 +387,10 @@ export default {
   color: white;
   font-size: 18px;
   text-transform: uppercase;
+  font-weight: bold;
 }
 .themes {
+  margin-top: 10px;;
   height: 200px;
   width: 100%;
   display: flex;
@@ -393,7 +401,7 @@ export default {
 }
 .continent {
   color: white;
-  height: 30px;
+  height: 50px;
   width: 100px;
   display: flex;
   justify-content: space-between;
@@ -419,7 +427,7 @@ export default {
   margin-top: 10px;
    position: absolute;
    top: 340px;
- left: 700px;
+ left: 720px;
 }
 .arrow {
  color: white;
