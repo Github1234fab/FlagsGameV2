@@ -3,11 +3,12 @@
     <div class="table_board">
       <h1>Choisis un continent</h1>
       <div class="themes">
-        <span class="continent">Europe <input @click="findUrl(0)" type="radio" /></span>
-        <span class="continent">Asie <input @click="findUrl(2)" type="radio" /></span>
-        <span class="continent">Amérique<input @click="findUrl(3)" type="radio" /></span>
-        <span class="continent">Afrique <input @click="findUrl(4)" type="radio" /></span>
-        <span class="continent">Océanie <input @click="findUrl(5)" type="radio" /></span>
+        <span class="continent">Europe <input @click="findUrl(0)" type="radio" name="continent" /></span>
+        <span class="continent">Asie <input @click="findUrl(1)" type="radio" name="continent"/></span>
+        <span class="continent">Amérique<input @click="findUrl(2)" type="radio" name="continent"/></span>
+        <span class="continent">Afrique <input @click="findUrl(3)" type="radio" name="continent"/></span>
+        <span class="continent">Océanie <input @click="findUrl(4)" type="radio" name="continent"/></span>
+         <span class="continent">Monde en entier<input @click="findUrl(5)" type="radio" name="continent"/></span>
       </div>
     </div>
     <div class="container_Gaming">
@@ -16,7 +17,7 @@
         <div class="container_counter" ref="containerCounter">
           <h3 class="counter_title"></h3>
           <h3 class="counter">{{ counter }}</h3>
-          <p class="resultat" ref="resultat">{{ counter }} points sur 5.</p>
+          <p class="resultat" ref="resultat">{{ counter }} points sur 10.</p>
           <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
         </div>
 
@@ -46,12 +47,12 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      urlA: 'https://restcountries.com/v3.1/subregion/europe',
-      urlB: 'https://restcountries.com/v3.1/subregion/americas',
-      urlC: 'https://restcountries.com/v3.1/subregion/africa',
-      urlD: 'https://restcountries.com/v3.1/subregion/asia',
-      urlE: 'https://restcountries.com/v3.1/subregion/oceania',
-      urlF: 'https://restcountries.com/v3.1/subregion/all',
+      urlA: 'https://restcountries.com/v3.1/region/europe',
+      urlB: 'https://restcountries.com/v3.1/region/asia',
+      urlC: 'https://restcountries.com/v3.1/region/america',
+      urlD: 'https://restcountries.com/v3.1/region/africa',
+      urlE: 'https://restcountries.com/v3.1/region/Oceania',
+      urlF: 'https://restcountries.com/v3.1/all',
       flag: [],
       countryName: '',
       countryFlag: '',
@@ -195,6 +196,8 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 5px;
+  background-size: fill;
+  /* background-repeat: no-repeat; */
 }
 .container_counter {
   height: 200px;
