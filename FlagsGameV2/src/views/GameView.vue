@@ -3,32 +3,44 @@
     <div class="table_board">
       <h1>Choisis un continent</h1>
       <div class="themes">
-        <span class="continent">Europe <input @click="findUrl(0)" type="radio" name="continent" /></span>
-        <span class="continent">Asie <input @click="findUrl(1)" type="radio" name="continent"/></span>
-        <span class="continent">Amérique<input @click="findUrl(2)" type="radio" name="continent"/></span>
-        <span class="continent">Afrique <input @click="findUrl(3)" type="radio" name="continent"/></span>
-        <span class="continent">Océanie <input @click="findUrl(4)" type="radio" name="continent"/></span>
-         <span class="continent">Monde<input @click="findUrl(5)" type="radio" name="continent"/></span>
+        <span class="continent"
+          >Europe <input @click="findUrl(0)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Asie <input @click="findUrl(1)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Amérique<input @click="findUrl(2)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Afrique <input @click="findUrl(3)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Océanie <input @click="findUrl(4)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Monde<input @click="findUrl(5)" type="radio" name="continent"
+        /></span>
       </div>
     </div>
     <div class="container_Gaming">
       <div class="container_gamer" ref="containerGamer">
-
         <div class="container_counter" ref="containerCounter">
           <h3 class="counter_title">Points</h3>
           <h3 class="counter">{{ counter }}</h3>
-            <h3 class="counter_title">Coups</h3>
-          <h3 class="counter">{{ gamePart }} </h3>
+          <h3 class="counter_title">Coups</h3>
+          <h3 class="counter">{{ gamePart }} /10</h3>
           <!-- <p class="resultat" ref="resultat">{{ counter }} points sur 10.</p> -->
-          <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
+          <button ref="newGame" @click="reload" class="new_game">Rejouer ?</button>
         </div>
 
-     
         <div class="container_div">
-          <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag"/>
-             <h3 class="question">À quel pays appartient ce drapeau?</h3>
+          <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
+          <h3 class="question">À quel pays appartient ce drapeau?</h3>
+          <div ref="suivant" @click="restartGame" class="next">
+            <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
+          </div>
           <div class="container_countries_names" ref="containerQuestionRandom">
-          
             <div @click="reponse" class="countries_names" ref="divRedOne">
               {{ dataNameRandomOne }}
             </div>
@@ -37,8 +49,6 @@
             </div>
             <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
           </div>
-           <div ref="suivant" @click="restartGame" class="next"><i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
-            </div>
         </div>
       </div>
     </div>
@@ -79,7 +89,6 @@ export default {
         this.countryFlag = randomElement.flags.png
         console.log(this.countryName)
         console.log(this.countryFlag)
-    
       })
     },
     //fonction pour obtenir deux noms aléatoires qui seront associés au vrai nom de drapeau...................
@@ -137,21 +146,22 @@ export default {
       this.shuffle()
     },
     reload() {
-      this.oneflag()
-      this.randomNameOne()
-      this.randomNameTwo()
-      this.shuffle()
-      this.counter = 0
-      this.$refs.divGreen.classList.remove('correct')
-      this.$refs.divRedOne.classList.remove('incorrect')
-      this.$refs.divRedTwo.classList.remove('incorrect')
-      this.$refs.divGreen.classList.remove('disabled')
-      this.$refs.divRedOne.classList.remove('disabled')
-      this.$refs.divRedTwo.classList.remove('disabled')
-      this.$refs.suivant.classList.remove('disabled')
-      // this.$refs.resultat.classList.remove('resultat_visible')
-      this.$refs.newGame.classList.remove('new_game_visible')
-      this.$refs.containerCounter.classList.remove('container_counter_resultat')
+      // this.oneflag()
+      // this.randomNameOne()
+      // this.randomNameTwo()
+      // this.shuffle()
+      // this.counter = 0
+      // this.$refs.divGreen.classList.remove('correct')
+      // this.$refs.divRedOne.classList.remove('incorrect')
+      // this.$refs.divRedTwo.classList.remove('incorrect')
+      // this.$refs.divGreen.classList.remove('disabled')
+      // this.$refs.divRedOne.classList.remove('disabled')
+      // this.$refs.divRedTwo.classList.remove('disabled')
+      // this.$refs.suivant.classList.remove('disabled')
+      // // this.$refs.resultat.classList.remove('resultat_visible')
+      // this.$refs.newGame.classList.remove('new_game_visible')
+      // this.$refs.containerCounter.classList.remove('container_counter_resultat')
+      window.location.reload()
     },
     shuffle() {
       const parent = this.$refs.containerQuestionRandom
@@ -166,7 +176,7 @@ export default {
       console.log(this.urlSelected)
       this.fetchData()
       this.$refs.flag.classList.add('countryFlag_visible')
-      console.log("ok");
+      console.log('ok')
       this.$refs.containerGamer.classList.add('container_gamer_visible')
     },
     fetchData() {
@@ -193,26 +203,24 @@ export default {
 
 <style>
 .container_game {
-  background: url('../assets/DALL·E 2023-04-06 15.15.09 - a design of mountains on which are planted all the flags of the world with blue sky.png');
-  height: 100vh;
+  background: radial-gradient(circle, blue, white);
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5px;
-  background-size: fill;
-  /* background-repeat: no-repeat; */
 }
 .container_counter {
-  height: 200px;
-  width: 250px;
+  height: 250px;
+  width: 100px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: absolute;
-  left: 570px;
-  top: 35px;
+  left: 560px;
+  top: 20px;
 }
 
 .container_countries_names {
@@ -230,18 +238,18 @@ export default {
 }
 .container_gamer_visible {
   visibility: visible;
-   margin-top: 25px;
-  align-items: center;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to left, lightGrey, 10%, rgb(194, 2, 2), 10%,  lightGrey);
-  /* background:linear-gradient(to left, rgb(235, 235, 239), 30% ,  rgb(128, 118, 118)); */
+  background-color: white;
   align-items: center;
   align-content: center;
   border-radius: 15px;
-  height: 460px;
-  width: 800px;
+  height: 500px;
+  width: 700px;
   position: relative;
+  border: solid rgb(137, 165, 237) 10px;
+  box-shadow: 1px 1px 5px grey;
 }
 
 .container_div {
@@ -255,27 +263,28 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   color: rgb(53, 51, 51);
-  border: solid 1px rgb(110, 106, 106);
+  /* border: solid 1px rgb(110, 106, 106); */
   padding: 10px;
   border-radius: 10px;
   background-color: transparent;
-  width: 50px;
+  width: 100px;
   height: 50px;
   padding: 20px;
-  box-shadow: 2px 2px 3px grey;
+  box-shadow: 1px 1px 5px grey;
 }
 .counter_title {
   color: rgb(51, 51, 49);
-  font-size: 15px;
+  font-size: 16px;
   text-align: center;
-  font-weight: 800;
+  font-weight: 400;
+  font-family: poppins;
 }
 
 .question {
   font-size: 18px;
-  color: rgb(63, 61, 61);
+  color: rgb(1, 21, 42);
   margin-top: 20px;
   text-transform: uppercase;
   font-weight: bold;
@@ -299,7 +308,7 @@ export default {
 }
 .countryFlag_visible {
   height: 220px;
-  width: 340px;
+  width: 320px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   margin-bottom: 20px;
@@ -313,14 +322,14 @@ export default {
 }
 .countries_names {
   color: rgb(1, 1, 72);
-  box-shadow: 2px 2px 20px 0px rgb(83, 82, 82);
-  background: linear-gradient(to right, rgb(249, 249, 249), rgb(205, 198, 198));
-  width: 300px;
+  box-shadow: 1px 1px 7px 0px rgb(83, 82, 82);
+  background-color: white;
+  width: 350px;
   padding: 10px;
-  font-size: 15px;
-  border-radius: 5px;
+  font-size: 17px;
+  border-radius: 15px;
   transition: 0.4s ease-in-out;
-  height: 50px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,16 +361,16 @@ export default {
 /* .new_game {
   visibility: hidden;
 } */
-.resultat{
+.resultat {
   visibility: visible;
   color: white;
   margin-top: 10px;
   transition: visibility2s ease-in;
 }
-.new_game{
+.new_game {
   visibility: hidden;
 }
-.new_game_visible{
+.new_game_visible {
   visibility: visible;
   background-color: rgb(38, 38, 80);
   color: rgb(255, 255, 255);
@@ -370,7 +379,7 @@ export default {
   height: 60px;
   border: none;
   transition: visibility 2s ease-in;
-  font-size: 22px;
+  font-size: 18px;
 }
 .table_board {
   background: linear-gradient(to left, transparent, rgb(11, 91, 141), transparent);
@@ -393,7 +402,7 @@ export default {
   font-weight: bold;
 }
 .themes {
-  margin-top: 10px;;
+  margin-top: 10px;
   height: 200px;
   width: 100%;
   display: flex;
@@ -413,14 +422,14 @@ export default {
   align-content: center;
 }
 .next {
-  color: rgb(255, 255, 255);
+  color: rgb(117, 217, 16);
   width: 50px;
   height: 50px;
   padding: 10px;
   margin-bottom: 5px;
   font-size: 14px;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid rgb(53, 50, 50);
   transition: 0.4s ease-in-out;
   display: flex;
   align-items: center;
@@ -428,12 +437,12 @@ export default {
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
-   position: absolute;
-   top: 359px;
- left: 720px;
+  position: absolute;
+  top: 290px;
+  left: 590px;
+  box-shadow: 1px 1px 5px grey;
 }
 .arrow {
- color: white;
-
+  color: rgb(117, 217, 16);
 }
 </style>

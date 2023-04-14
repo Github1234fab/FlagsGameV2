@@ -80,8 +80,7 @@ a{
   height: 100vh;
   width: 100%;
   background: url('../assets/DALL·E 2023-04-06 15.15.01 - a design of mountains on which are planted all the flags of the world with blue sky.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container_menu {
