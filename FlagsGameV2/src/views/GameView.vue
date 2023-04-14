@@ -15,9 +15,11 @@
       <div class="container_gamer" ref="containerGamer">
 
         <div class="container_counter" ref="containerCounter">
-          <h3 class="counter_title"></h3>
+          <h3 class="counter_title">Points</h3>
           <h3 class="counter">{{ counter }}</h3>
-          <p class="resultat" ref="resultat">{{ counter }} points sur 10.</p>
+            <h3 class="counter_title">Coups</h3>
+          <h3 class="counter">{{ gamePart }} </h3>
+          <!-- <p class="resultat" ref="resultat">{{ counter }} points sur 10.</p> -->
           <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
         </div>
 
@@ -114,7 +116,7 @@ export default {
       this.gamePart++
       console.log(this.gamePart)
       if (this.gamePart == 10) {
-        console.log('Tu as fait une partie en 5')
+        console.log('Tu as fait une partie en 10')
         this.$refs.divGreen.classList.add('disabled')
         this.$refs.divRedOne.classList.add('disabled')
         this.$refs.divRedTwo.classList.add('disabled')
@@ -254,17 +256,18 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: rgb(236, 230, 230);
-  border: solid 1px rgb(246, 246, 246);
+  color: rgb(53, 51, 51);
+  border: solid 1px rgb(110, 106, 106);
   padding: 10px;
   border-radius: 10px;
   background-color: transparent;
   width: 50px;
   height: 50px;
   padding: 20px;
+  box-shadow: 2px 2px 3px grey;
 }
 .counter_title {
-  color: rgb(243, 244, 239);
+  color: rgb(51, 51, 49);
   font-size: 15px;
   text-align: center;
   font-weight: 800;
@@ -295,7 +298,7 @@ export default {
   visibility: hidden;
 }
 .countryFlag_visible {
-  height: 200px;
+  height: 220px;
   width: 340px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
@@ -426,7 +429,7 @@ export default {
   gap: 10px;
   margin-top: 10px;
    position: absolute;
-   top: 340px;
+   top: 359px;
  left: 720px;
 }
 .arrow {
