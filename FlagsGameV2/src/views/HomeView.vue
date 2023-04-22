@@ -1,11 +1,8 @@
 <template>
   <div class="container_homePage">
-    <div class="container_menu">
-         <router-link to="/game" class="game_menu">Quel est le nom du pays?</router-link>
-      <h2 class="game_menu">Quelle est sa capitale?</h2>
-      <h2 class="game_menu">Comment s'appellent ses habitants?</h2>
-      <h2 class="game_menu">Quelle est le nom de sa monnaie?</h2>
-    </div>
+    
+    <div class="title"></div>
+    <h1>Connais-tu ce monde?</h1>
   </div>
   <!-- <div class="container_flags">
     <div v-for="(infos, index) in flags" :key="index">
@@ -62,15 +59,6 @@ button {
   height: 100px;
   width: 100px;
 }
-
-.game_menu {
-  width: 200px;
-  font-family: poppins;
-  font-size: 18px;
-  color: rgb(255, 255, 255);
-  text-shadow: 0px 0px 10px #ffffff; 
-}
-
 a{
   text-decoration: none;
 }
@@ -79,8 +67,9 @@ a{
   display: flex;
   height: 100vh;
   width: 100%;
-  background: url('../assets/DALL·E 2023-04-06 15.15.01 - a design of mountains on which are planted all the flags of the world with blue sky.png');
+  background: url('../assets/_65af0787-f768-43b3-8750-ca3315853ea0.jpeg');
   background-size: cover;
+  position: relative;
 }
 
 .container_menu {
@@ -90,6 +79,14 @@ a{
   height: 300px;
   margin-top: 50px;
 
+}
+
+.container_homePage h1{
+ position: absolute;
+  top: 5%;
+  left: 30%;
+  color: white;
+  font-family: oswald;
 }
 
 </style>

@@ -203,7 +203,7 @@ export default {
 
 <style>
 .container_game {
-  background: radial-gradient(circle, blue, white);
+  /* background: radial-gradient(circle, blue, white); */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -382,15 +382,14 @@ export default {
   font-size: 18px;
 }
 .table_board {
-  background: linear-gradient(to left, transparent, rgb(11, 91, 141), transparent);
+  background: linear-gradient(to top, transparent, rgb(11, 91, 141), transparent);
   /* background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70)); */
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: space-around;
-  height: 120px;
-  width: 900px;
+  width: 100%;
   padding: 20px;
   /* border-radius: 15px; */
   /* box-shadow: 1px 1px 5px grey; */
