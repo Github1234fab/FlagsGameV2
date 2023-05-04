@@ -22,7 +22,7 @@ body{
 .header {
    height:150px;
   width: 100%;
-  background: linear-gradient(to bottom, #323232 80%, transparent);
+  background: linear-gradient(to bottom, #2e2e2e 80%, transparent);
   display: flex;
   flex-direction: column;
   /* justify-content: space-around; */

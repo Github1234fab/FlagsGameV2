@@ -235,7 +235,8 @@ export default {
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  border: solid white 2px;
+  border: solid white 1px;
+  box-shadow: 1px 1px 3px black;
 }
 .container_countries_names {
   display: flex;
@@ -335,13 +336,13 @@ export default {
 }
 .correct {
   background: linear-gradient(rgb(152, 253, 0), rgb(18, 200, 5));
-  box-shadow: 1px 1px 3px rgb(39, 38, 38);
+  box-shadow: 1px 1px 3px rgb(39, 38, 38) inset, -1px 1px 3px rgb(39, 38, 38) inset;
   color: rgb(255, 255, 255);
 }
 .incorrect {
   background: linear-gradient(rgb(236, 43, 43), rgb(231, 36, 36));
   color: white;
-  box-shadow: 1px 1px 3px rgb(39, 38, 38);
+  box-shadow: 1px 1px 3px rgb(39, 38, 38) inset, -1px 1px 3px rgb(39, 38, 38) inset;
 }
 .clicked-wrong {
   background: linear-gradient(rgb(242, 43, 43), rgb(229, 115, 115));
@@ -383,8 +384,15 @@ export default {
   font-size: 18px;
   padding: 20px;
   border: solid white 2px;
+  transform: scale();
+  transition: .200s ease-in;
+}
+.new_game_visible:hover{
+  box-shadow: 3px 3px 3px black inset;
+  transform: scale(0.9);
 }
 .table_board {
+  margin-top: 30px;
   background-color: white;
   box-shadow: 2px -1px 5px black inset;
   display: flex;
@@ -440,6 +448,10 @@ export default {
   align-content: center;
   justify-content: center;
   box-shadow: 1px 1px 5px rgb(23, 23, 23);
+  transition: .100s ease-in-out;
+}
+.next:hover{
+  transform: scale(1.1);
 }
 .arrow {
   color: white;
