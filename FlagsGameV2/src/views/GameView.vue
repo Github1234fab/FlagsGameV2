@@ -227,8 +227,8 @@ export default {
 
 }
 .container_counter {
-  height: 570px;
-  margin-top: 65px;
+  height: 550px;
+  margin-top: 78px;
   width: 200px;
   border-radius: 10px;
   display: flex;
