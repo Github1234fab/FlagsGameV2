@@ -36,19 +36,6 @@
     <div class="container_div" ref="container_Gaming">
       <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
       <!-- <h3 class="question">À quel pays appartient ce drapeau?</h3> -->
-
-      <div class="container_counter" ref="containerCounter">
-        <div class="points">
-          <h3 class="counter_title">Points</h3>
-          <h3 class="counter">{{ counter }}</h3>
-        </div>
-        <div class="nbr_of_shot">
-          <h3 class="counter_title">Coups</h3>
-          <h3 class="counter">{{ gamePart }} /10</h3>
-         
-        </div>
-        <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
-      </div>
       <div class="container_countries_names" ref="containerQuestionRandom">
         <div @click="reponse" class="countries_names" ref="divRedOne">
           {{ dataNameRandomOne }}
@@ -59,9 +46,20 @@
         <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
       </div>
        <div ref="suivant" @click="restartGame" class="next">
-            <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
-          </div>
+        <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
+      </div>
     </div>
+      <div class="container_counter" ref="containerCounter">
+        <div class="points">
+          <h3 class="counter_title">Points</h3>
+          <h3 class="counter">{{ counter }}/10</h3>
+        </div>
+        <div class="nbr_of_shot">
+          <h3 class="counter_title">Coups</h3>
+          <h3 class="counter">{{ gamePart }} /10</h3>
+        </div>
+        <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
+      </div>
   </div>
 </template>
 <script>
@@ -222,14 +220,22 @@ export default {
 } */
 .container_Gaming {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  gap: 50px;
+
 }
 .container_counter {
-  margin-top: 20px;
-  width: 400px;
+  height: 570px;
+  margin-top: 65px;
+  width: 200px;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-around;
+  border: solid white 2px;
 }
 .container_countries_names {
   display: flex;
@@ -241,45 +247,29 @@ export default {
   width: 600px;
   height: 30%;
 }
-.container_gamer {
-  visibility: hidden;
-}
-.container_gamer_visible {
-  visibility: visible;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 7px;
-  height: 100vh;
-  width: 100%;
-  box-shadow: 2px -1px 5px black inset;
-}
-
-/* position: absolute;
-  left: 800px;
-  top: 60px;
-} */
 
 .container_div {
-   visibility:hidden ;
+  visibility: hidden;
 }
 .container_div_visible {
-  margin-top: 20px;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 850px;
+  height: 600px;
   visibility: visible;
+  width: 20%;
+  
 }
 
 .counter {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
   color: rgb(255, 255, 255);
-  border: solid 2px white;
+  border: solid 1px white;
   padding: 10px;
   border-radius: 10px;
   background-color: transparent;
@@ -315,7 +305,7 @@ export default {
   visibility: hidden;
 }
 .countryFlag_visible {
-  height: 270px;
+  height: 250px;
   width: 350px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
@@ -452,6 +442,6 @@ export default {
   box-shadow: 1px 1px 5px rgb(23, 23, 23);
 }
 .arrow {
-color: white;
+  color: white;
 }
 </style>
