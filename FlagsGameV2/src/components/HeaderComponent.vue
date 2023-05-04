@@ -2,14 +2,14 @@
   <div class="header">
     <div class="logo_container">
       <h1 class="title_header">FlagsGame</h1>
-     <i class="fa-solid fa-flag fa-lg logo"></i>
+     <!-- <i class="fa-solid fa-flag fa-lg logo"></i> -->
     </div>
     <nav>
       <router-link to="/" class="game_menu"> Home</router-link>
-      <router-link to="/game" class="game_menu"> Drapeau</router-link>
-      <h2 class="game_menu">Capitale</h2>
+      <router-link to="/game" class="game_menu"> Drapeaux</router-link>
+      <h2 class="game_menu">Capitales</h2>
       <h2 class="game_menu">Habitants</h2>
-      <h2 class="game_menu">Monnaie</h2>
+      <h2 class="game_menu">Monnaies</h2>
     </nav>
   </div>
 </template>
@@ -22,35 +22,39 @@ body{
 .header {
    height:150px;
   width: 100%;
-  background-color: #1a4c70;
+  background: linear-gradient(to bottom, #323232 80%, transparent);
   display: flex;
   flex-direction: column;
   /* justify-content: space-around; */
   align-items: center;
   align-content: center;
-  background: linear-gradient(to bottom, #1a4c70, 90%,  transparent);
 }
 .title_header {
   color: white;
-  font-size: 22px;
-  margin-top: 20px;
+  font-size: 29px;
+  margin-top: 15px;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to left, orange 23% , rgb(86, 86, 242), pink );
+  color: transparent;
+
 }
 nav {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-around; 
 }
 
 .game_menu {
   margin-top: 20px;
-  font-family: oswald;
-  font-size: 18px;
+  font-family: poppins;
+  font-size: 14px;
   color: rgb(255, 255, 255);
   transition: .200s ease-in-out;
+   transform: scale() rotate();
   /* text-shadow: 0px 0px 1px #ffffff;  */
 }
 .game_menu:hover {
- font-size: 20px;
+ transform: scale(1.1) rotate(4deg);
 }
 .logo {
   margin-top: 10px;

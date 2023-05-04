@@ -2,7 +2,7 @@
   <div class="container_homePage">
     
     <div class="title"></div>
-    <h1>Connais-tu ce monde?</h1>
+    <!-- <h1>Connais-tu ce monde?</h1> -->
   </div>
   <!-- <div class="container_flags">
     <div v-for="(infos, index) in flags" :key="index">

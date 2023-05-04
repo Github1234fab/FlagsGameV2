@@ -1,56 +1,66 @@
 <template>
-  <div class="container_game">
-    <div class="table_board">
-      <h1>Choisis un continent</h1>
-      <div class="themes">
-        <span class="continent"
-          >Europe <input @click="findUrl(0)" type="radio" name="continent"
-        /></span>
-        <span class="continent"
-          >Asie <input @click="findUrl(1)" type="radio" name="continent"
-        /></span>
-        <span class="continent"
-          >Amérique<input @click="findUrl(2)" type="radio" name="continent"
-        /></span>
-        <span class="continent"
-          >Afrique <input @click="findUrl(3)" type="radio" name="continent"
-        /></span>
-        <span class="continent"
-          >Océanie <input @click="findUrl(4)" type="radio" name="continent"
-        /></span>
-        <span class="continent"
-          >Monde<input @click="findUrl(5)" type="radio" name="continent"
-        /></span>
-      </div>
+  <!-- <div class="container_game"> -->
+  <div class="table_board">
+    <!-- <h1>continents</h1> -->
+    <div class="themes">
+      <span class="continent"
+        >Europe <input @click="findUrl(0)" type="radio" name="continent"
+      /></span>
+      <span class="continent"
+        >Asie <input @click="findUrl(1)" type="radio" name="continent"
+      /></span>
+      <span class="continent"
+        >Amérique<input @click="findUrl(2)" type="radio" name="continent"
+      /></span>
+      <span class="continent"
+        >Afrique <input @click="findUrl(3)" type="radio" name="continent"
+      /></span>
+      <span class="continent"
+        >Océanie <input @click="findUrl(4)" type="radio" name="continent"
+      /></span>
+      <span class="continent"
+        >Monde<input @click="findUrl(5)" type="radio" name="continent"
+      /></span>
     </div>
-    <div class="container_Gaming">
-      <div class="container_gamer" ref="containerGamer">
-        <div class="container_counter" ref="containerCounter">
+  </div>
+  <div class="container_Gaming">
+    <!-- <div class="container_gamer" ref="containerGamer"> -->
+    <!-- <div class="container_counter" ref="containerCounter">
           <h3 class="counter_title">Points</h3>
           <h3 class="counter">{{ counter }}</h3>
           <h3 class="counter_title">Coups</h3>
           <h3 class="counter">{{ gamePart }} /10</h3>
-          <!-- <p class="resultat" ref="resultat">{{ counter }} points sur 10.</p> -->
           <button ref="newGame" @click="reload" class="new_game">Rejouer ?</button>
-        </div>
+        </div> -->
 
-        <div class="container_div">
-          <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
-          <h3 class="question">À quel pays appartient ce drapeau?</h3>
-          <div ref="suivant" @click="restartGame" class="next">
+    <div class="container_div" ref="container_Gaming">
+      <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
+      <!-- <h3 class="question">À quel pays appartient ce drapeau?</h3> -->
+
+      <div class="container_counter" ref="containerCounter">
+        <div class="points">
+          <h3 class="counter_title">Points</h3>
+          <h3 class="counter">{{ counter }}</h3>
+        </div>
+        <div class="nbr_of_shot">
+          <h3 class="counter_title">Coups</h3>
+          <h3 class="counter">{{ gamePart }} /10</h3>
+         
+        </div>
+        <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
+      </div>
+      <div class="container_countries_names" ref="containerQuestionRandom">
+        <div @click="reponse" class="countries_names" ref="divRedOne">
+          {{ dataNameRandomOne }}
+        </div>
+        <div @click="reponse" class="countries_names" ref="divRedTwo">
+          {{ dataNameRandomTwo }}
+        </div>
+        <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
+      </div>
+       <div ref="suivant" @click="restartGame" class="next">
             <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
           </div>
-          <div class="container_countries_names" ref="containerQuestionRandom">
-            <div @click="reponse" class="countries_names" ref="divRedOne">
-              {{ dataNameRandomOne }}
-            </div>
-            <div @click="reponse" class="countries_names" ref="divRedTwo">
-              {{ dataNameRandomTwo }}
-            </div>
-            <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -177,7 +187,7 @@ export default {
       this.fetchData()
       this.$refs.flag.classList.add('countryFlag_visible')
       console.log('ok')
-      this.$refs.containerGamer.classList.add('container_gamer_visible')
+      this.$refs.container_Gaming.classList.add('container_div_visible')
     },
     fetchData() {
       axios
@@ -202,61 +212,65 @@ export default {
 </script>
 
 <style>
-.container_game {
-  /* background: radial-gradient(circle, blue, white); */
-  height: 100%;
+/* .container_game {
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 5px;
+  background:linear-gradient(to bottom, transparent 20%, white);
+  margin: 0 10px;
+} */
+.container_Gaming {
+  height: 100vh;
 }
 .container_counter {
-  height: 250px;
-  width: 100px;
+  margin-top: 20px;
+  width: 400px;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  left: 560px;
-  top: 20px;
+  justify-content: space-around;
 }
-
 .container_countries_names {
-  margin-top: 40px;
   display: flex;
-  height: 50px;
-  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
   align-items: center;
   align-content: center;
   justify-content: center;
   width: 600px;
+  height: 30%;
 }
 .container_gamer {
   visibility: hidden;
 }
 .container_gamer_visible {
   visibility: visible;
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
   background-color: white;
-  align-items: center;
-  align-content: center;
-  border-radius: 15px;
-  height: 500px;
-  width: 700px;
-  position: relative;
-  border: solid rgb(137, 165, 237) 10px;
-  box-shadow: 1px 1px 5px grey;
+  border-radius: 7px;
+  height: 100vh;
+  width: 100%;
+  box-shadow: 2px -1px 5px black inset;
 }
 
+/* position: absolute;
+  left: 800px;
+  top: 60px;
+} */
+
 .container_div {
+   visibility:hidden ;
+}
+.container_div_visible {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: space-around;
+  height: 850px;
+  visibility: visible;
 }
 
 .counter {
@@ -264,15 +278,15 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: rgb(53, 51, 51);
-  /* border: solid 1px rgb(110, 106, 106); */
+  color: rgb(255, 255, 255);
+  border: solid 2px white;
   padding: 10px;
   border-radius: 10px;
   background-color: transparent;
   width: 100px;
-  height: 50px;
+  height: 100px;
   padding: 20px;
-  box-shadow: 1px 1px 5px grey;
+  box-shadow: 1px 1px 5px rgb(30, 30, 30);
 }
 .counter_title {
   color: rgb(51, 51, 49);
@@ -298,21 +312,16 @@ export default {
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64) inset;
 }
 .countryFlag {
-  /* height: 200px;
-  width: 240px; */
-  box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
-  border-radius: 2px;
-  margin-bottom: 20px;
-  margin-top: 20px;
   visibility: hidden;
 }
 .countryFlag_visible {
-  height: 220px;
-  width: 320px;
+  height: 270px;
+  width: 350px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  border: solid white 3px;
+  /* margin-bottom: 20px;
+  margin-top: 20px; */
   visibility: visible;
 }
 .input {
@@ -371,38 +380,41 @@ export default {
   visibility: hidden;
 }
 .new_game_visible {
+  margin-top: 10px;
   visibility: visible;
   background-color: rgb(38, 38, 80);
   color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 1px 1px 4px 0px rgb(4, 4, 4);
-  height: 60px;
+  height: 120px;
+  width: 120px;
   border: none;
   transition: visibility 2s ease-in;
   font-size: 18px;
+  padding: 20px;
+  border: solid white 2px;
 }
 .table_board {
-  background: linear-gradient(to top, transparent, rgb(11, 91, 141), transparent);
-  /* background: linear-gradient(to left, rgb(178, 180, 29), 10%, rgb(190, 190, 70)); */
+  background-color: white;
+  box-shadow: 2px -1px 5px black inset;
   display: flex;
   flex-direction: column;
-  align-content: center;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
-  padding: 20px;
-  /* border-radius: 15px; */
-  /* box-shadow: 1px 1px 5px grey; */
+  padding-top: 30px;
+  padding-bottom: 40px;
+  /* border: solid 1px orange; */
+  border-radius: 7px;
 }
 .table_board h1 {
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
 }
 .themes {
   margin-top: 10px;
-  height: 200px;
+  height: 20px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -411,7 +423,8 @@ export default {
   margin-right: 220px;
 }
 .continent {
-  color: white;
+  color: orangered;
+  font-size: 13px;
   height: 50px;
   width: 100px;
   display: flex;
@@ -419,13 +432,15 @@ export default {
   flex-direction: column;
   align-items: center;
   align-content: center;
+  font-family: poppins;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 .next {
   color: rgb(117, 217, 16);
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  margin-bottom: 5px;
+  width: 60px;
+  height: 60px;
   font-size: 14px;
   border-radius: 50%;
   border: 1px solid rgb(53, 50, 50);
@@ -434,14 +449,9 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-  position: absolute;
-  top: 290px;
-  left: 590px;
-  box-shadow: 1px 1px 5px grey;
+  box-shadow: 1px 1px 5px rgb(23, 23, 23);
 }
 .arrow {
-  color: rgb(117, 217, 16);
+color: white;
 }
 </style>
