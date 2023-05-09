@@ -24,18 +24,18 @@
     </div>
   </div>
   <div class="container_Gaming">
-    <!-- <div class="container_gamer" ref="containerGamer"> -->
-    <!-- <div class="container_counter" ref="containerCounter">
-          <h3 class="counter_title">Points</h3>
-          <h3 class="counter">{{ counter }}</h3>
+    <div class="container_div" ref="container_Gaming">
+      <div class="container_flagAndCounter">
+        <div class="nbr_of_shot">
           <h3 class="counter_title">Coups</h3>
           <h3 class="counter">{{ gamePart }} /10</h3>
-          <button ref="newGame" @click="reload" class="new_game">Rejouer ?</button>
-        </div> -->
-
-    <div class="container_div" ref="container_Gaming">
-      <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
-      <!-- <h3 class="question">À quel pays appartient ce drapeau?</h3> -->
+        </div>
+        <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
+         <div class="points">
+          <h3 class="counter_title">Points</h3>
+          <h3 class="counter">{{ counter }}/10</h3>
+        </div>
+      </div>
       <div class="container_countries_names" ref="containerQuestionRandom">
         <div @click="reponse" class="countries_names" ref="divRedOne">
           {{ dataNameRandomOne }}
@@ -45,21 +45,11 @@
         </div>
         <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
       </div>
-       <div ref="suivant" @click="restartGame" class="next">
+      <div ref="suivant" @click="restartGame" class="next">
         <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
       </div>
     </div>
-      <div class="container_counter" ref="containerCounter">
-        <div class="points">
-          <h3 class="counter_title">Points</h3>
-          <h3 class="counter">{{ counter }}/10</h3>
-        </div>
-        <div class="nbr_of_shot">
-          <h3 class="counter_title">Coups</h3>
-          <h3 class="counter">{{ gamePart }} /10</h3>
-        </div>
-        <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
-      </div>
+      <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
   </div>
 </template>
 <script>
@@ -210,22 +200,21 @@ export default {
 </script>
 
 <style>
-/* .container_game {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background:linear-gradient(to bottom, transparent 20%, white);
-  margin: 0 10px;
-} */
+
 .container_Gaming {
   height: 100vh;
   display: flex;
   justify-content: center;
   width: 100vw;
   gap: 50px;
-
 }
+ .container_flagAndCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+  }
 .container_counter {
   height: 550px;
   margin-top: 78px;
@@ -261,7 +250,6 @@ export default {
   height: 600px;
   visibility: visible;
   width: 20%;
-  
 }
 
 .counter {
@@ -385,14 +373,15 @@ export default {
   padding: 20px;
   border: solid white 2px;
   transform: scale();
-  transition: .200s ease-in;
+  transition: 0.2s ease-in;
 }
-.new_game_visible:hover{
+.new_game_visible:hover {
   box-shadow: 3px 3px 3px black inset;
   transform: scale(0.9);
 }
 .table_board {
   margin-top: 30px;
+  margin-left: 10px;
   background-color: white;
   box-shadow: 2px -1px 5px black inset;
   display: flex;
@@ -431,9 +420,10 @@ export default {
   align-items: center;
   align-content: center;
   font-family: poppins;
-  letter-spacing: 2px;
+  letter-spacing: 0px;
   text-transform: uppercase;
   font-weight: 700;
+  gap: 5px;
 }
 .next {
   color: rgb(117, 217, 16);
@@ -448,12 +438,148 @@ export default {
   align-content: center;
   justify-content: center;
   box-shadow: 1px 1px 5px rgb(23, 23, 23);
-  transition: .100s ease-in-out;
+  transition: 0.1s ease-in-out;
 }
-.next:hover{
+.next:hover {
   transform: scale(1.1);
 }
 .arrow {
   color: white;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+@media screen and (max-width: 768px) {
+
+  .table_board {
+    margin-top: 10px;
+    background-color: white;
+    box-shadow: 2px -1px 5px black inset, -2px 1px 5px black inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 60px;
+    border-radius: 7px;
+    width: 360px;
+    margin-left: 7px;
+  }
+  .continent {
+    color: orangered;
+    font-size: 10px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* align-content: center; */
+    font-family: poppins;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: -10px;
+  }
+  .container_Gaming {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    gap: 50px;
+   
+  }
+  .container_div_visible {
+    margin-top: -70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    visibility: visible;
+    width: 100%;
+  }
+  .countryFlag_visible {
+    height: 130px;
+    width: 190px;
+    box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
+    border-radius: 2px;
+    border: solid white 3px;
+    visibility: visible;
+  }
+  .container_countries_names {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 70%;
+    height: 30%;
+    margin-top: 30px;
+  }
+  .countries_names {
+    color: rgb(1, 1, 72);
+    box-shadow: 1px 1px 7px 0px rgb(83, 82, 82);
+    background-color: white;
+    width: 70%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    transition: 0.4s ease-in-out;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .next {
+    color: rgb(117, 217, 16);
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+    border-radius: 50%;
+    border: 2px solid rgb(53, 50, 50);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 1px 1px 5px rgb(23, 23, 23);
+    transition: 0.1s ease-in-out;
+    margin-top: 20px;
+  }
+  .next:hover {
+    transform: scale(1.1);
+  }
+  .container_flagAndCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+  }
+  .counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    border: solid 2px white;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    width: 70px;
+    height: 70px;
+    box-shadow: 1px 1px 5px rgb(30, 30, 30);
+  }
+  .counter_title {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+    font-family: poppins;
+  }
 }
 </style>
