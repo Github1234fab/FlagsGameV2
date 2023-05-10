@@ -44,7 +44,7 @@
           </div>
           <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
         </div>
-        <div ref="suivant" @click="restartGame" class="next">
+        <div @click="restartGame" class="next" ref="nextButton">
           <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
         </div>
       </div>
@@ -123,16 +123,15 @@ export default {
       console.log('ok')
       this.gamePart++
       console.log(this.gamePart)
-      if (this.gamePart == 10) {
+      if (this.gamePart === 10) {
         console.log('Tu as fait une partie en 10')
         this.$refs.divGreen.classList.add('disabled')
         this.$refs.divRedOne.classList.add('disabled')
         this.$refs.divRedTwo.classList.add('disabled')
-        // this.$refs.resultat.classList.add('resultat_visible')
-        // this.$refs.newGame.classList.add('new_game_visible')
+        this.$refs.nextButton.classList.add('disabled')
         this.$refs.containerCounter.classList.add('container_counter_resultat')
-        this.$refs.suivant.classList.add('disabled')
-        this.showNewGameButton = false
+      
+        this.showNewGameButton = false;
       }
     },
     restartGame() {
@@ -253,7 +252,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
   height: 600px;
   visibility: visible;
   width: 100%;
@@ -338,12 +336,7 @@ export default {
 .abled {
   pointer-events: all;
 }
-/* .resultat {
-  visibility: hidden;
-} */
-/* .new_game {
-  visibility: hidden;
-} */
+
 .resultat {
   visibility: visible;
   color: white;
@@ -420,7 +413,7 @@ export default {
   gap: 5px;
 }
 .next {
-  color: rgb(117, 217, 16);
+  background-color: blue;
   width: 60px;
   height: 60px;
   font-size: 14px;
@@ -434,8 +427,20 @@ export default {
   box-shadow: 1px 1px 5px rgb(23, 23, 23);
   transition: 0.1s ease-in-out;
 }
-.next:hover {
-  transform: scale(1.1);
+.next2 {
+  color: rgb(217, 16, 16);
+  width: 60px;
+  height: 60px;
+  font-size: 14px;
+  border-radius: 50%;
+  border: 1px solid rgb(53, 50, 50);
+  transition: 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 1px 1px 5px rgb(23, 23, 23);
+  transition: 0.1s ease-in-out;
 }
 .arrow {
   color: white;
@@ -447,7 +452,9 @@ export default {
   .container_game {
     margin-top: 10px;
   }
-
+.countries_names{
+  font-size: 14px;
+}
   .countryFlag_visible {
     height: 100px;
     width: 100px;

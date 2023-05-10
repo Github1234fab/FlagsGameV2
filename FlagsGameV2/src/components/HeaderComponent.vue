@@ -95,6 +95,5 @@ nav {
     transform: scale() rotate();
     margin-top: -20px;
   }
-
 }
 </style>
