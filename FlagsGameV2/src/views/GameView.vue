@@ -489,7 +489,7 @@ export default {
   }
   .table_board {
     background-color: white;
-    box-shadow: 2px -1px 5px black inset;
+    box-shadow: 1px -1px 3px black inset, -1px 1px 3px black inset;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -498,6 +498,7 @@ export default {
     border-radius: 7px;
     width: 90%;
     height: 30px;
+    z-index: 1;
   }
   .continent {
     color: orangered;
