@@ -1,55 +1,55 @@
 <template>
-  <!-- <div class="container_game"> -->
-  <div class="table_board">
-    <!-- <h1>continents</h1> -->
-    <div class="themes">
-      <span class="continent"
-        >Europe <input @click="findUrl(0)" type="radio" name="continent"
-      /></span>
-      <span class="continent"
-        >Asie <input @click="findUrl(1)" type="radio" name="continent"
-      /></span>
-      <span class="continent"
-        >Amérique<input @click="findUrl(2)" type="radio" name="continent"
-      /></span>
-      <span class="continent"
-        >Afrique <input @click="findUrl(3)" type="radio" name="continent"
-      /></span>
-      <span class="continent"
-        >Océanie <input @click="findUrl(4)" type="radio" name="continent"
-      /></span>
-      <span class="continent"
-        >Monde<input @click="findUrl(5)" type="radio" name="continent"
-      /></span>
-    </div>
-  </div>
-  <div class="container_Gaming">
-    <div class="container_div" ref="container_Gaming">
-      <div class="container_flagAndCounter">
-        <div class="nbr_of_shot">
-          <h3 class="counter_title">Coups</h3>
-          <h3 class="counter">{{ gamePart }} /10</h3>
-        </div>
-        <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
-         <div class="points">
-          <h3 class="counter_title">Points</h3>
-          <h3 class="counter">{{ counter }}/10</h3>
-        </div>
-      </div>
-      <div class="container_countries_names" ref="containerQuestionRandom">
-        <div @click="reponse" class="countries_names" ref="divRedOne">
-          {{ dataNameRandomOne }}
-        </div>
-        <div @click="reponse" class="countries_names" ref="divRedTwo">
-          {{ dataNameRandomTwo }}
-        </div>
-        <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
-      </div>
-      <div ref="suivant" @click="restartGame" class="next">
-        <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
+  <div class="container_game">
+    <div class="table_board">
+      <div class="themes">
+        <span class="continent"
+          >Europe <input @click="findUrl(0)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Asie <input @click="findUrl(1)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Amérique<input @click="findUrl(2)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Afrique <input @click="findUrl(3)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Océanie <input @click="findUrl(4)" type="radio" name="continent"
+        /></span>
+        <span class="continent"
+          >Monde<input @click="findUrl(5)" type="radio" name="continent"
+        /></span>
       </div>
     </div>
-      <button ref="newGame" @click="reload" class="new_game">Rejouer</button>
+    <div class="container_Gaming">
+      <div class="container_div" ref="container_Gaming">
+        <div class="container_flagAndCounter">
+          <div class="nbr_of_shot">
+            <h3 class="counter_title">Coups</h3>
+            <h3 class="counter">{{ gamePart }}/10</h3>
+          </div>
+          <img :src="countryFlag" alt="Image des drapeaux" class="countryFlag" ref="flag" />
+          <div class="points">
+            <h3 class="counter_title">Points</h3>
+            <h3 class="counter">{{ counter }}/10</h3>
+          </div>
+        </div>
+        <div class="container_countries_names" ref="containerQuestionRandom">
+          <div @click="reponse" class="countries_names" ref="divRedOne">
+            {{ dataNameRandomOne }}
+          </div>
+          <div @click="reponse" class="countries_names" ref="divRedTwo">
+            {{ dataNameRandomTwo }}
+          </div>
+          <div @click="reponse" class="countries_names" ref="divGreen">{{ countryName }}</div>
+        </div>
+        <div ref="suivant" @click="restartGame" class="next">
+          <i class="fa-solid fa-arrow-right fa-2xl arrow"></i>
+        </div>
+      </div>
+      <button @click="reload" class="new_game" v-if="showNewGameButton">Rejouer</button>
+    </div>
   </div>
 </template>
 <script>
@@ -74,7 +74,8 @@ export default {
       counter: 0,
       gamePart: 0,
       disabledDivs: false,
-      urlSelected: ''
+      urlSelected: '',
+      showNewGameButton: false
     }
   },
   methods: {
@@ -128,9 +129,10 @@ export default {
         this.$refs.divRedOne.classList.add('disabled')
         this.$refs.divRedTwo.classList.add('disabled')
         // this.$refs.resultat.classList.add('resultat_visible')
-        this.$refs.newGame.classList.add('new_game_visible')
+        // this.$refs.newGame.classList.add('new_game_visible')
         this.$refs.containerCounter.classList.add('container_counter_resultat')
         this.$refs.suivant.classList.add('disabled')
+        this.showNewGameButton = false
       }
     },
     restartGame() {
@@ -144,21 +146,6 @@ export default {
       this.shuffle()
     },
     reload() {
-      // this.oneflag()
-      // this.randomNameOne()
-      // this.randomNameTwo()
-      // this.shuffle()
-      // this.counter = 0
-      // this.$refs.divGreen.classList.remove('correct')
-      // this.$refs.divRedOne.classList.remove('incorrect')
-      // this.$refs.divRedTwo.classList.remove('incorrect')
-      // this.$refs.divGreen.classList.remove('disabled')
-      // this.$refs.divRedOne.classList.remove('disabled')
-      // this.$refs.divRedTwo.classList.remove('disabled')
-      // this.$refs.suivant.classList.remove('disabled')
-      // // this.$refs.resultat.classList.remove('resultat_visible')
-      // this.$refs.newGame.classList.remove('new_game_visible')
-      // this.$refs.containerCounter.classList.remove('container_counter_resultat')
       window.location.reload()
     },
     shuffle() {
@@ -190,6 +177,7 @@ export default {
           this.shuffle()
           this.gamePart()
           this.reload()
+          this.showNewGameButton = true
         })
         .catch((error) => {
           console.log(error)
@@ -200,21 +188,26 @@ export default {
 </script>
 
 <style>
-
+.container_game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 .container_Gaming {
   height: 100vh;
   display: flex;
   justify-content: center;
-  width: 100vw;
-  gap: 50px;
+  width: 100%;
+  margin-top: -30px;
 }
- .container_flagAndCounter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-  }
+.container_flagAndCounter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
 .container_counter {
   height: 550px;
   margin-top: 78px;
@@ -230,26 +223,41 @@ export default {
 .container_countries_names {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
   align-content: center;
   justify-content: center;
-  width: 600px;
+  width: 80%;
   height: 30%;
+}
+.countries_names {
+  color: rgb(1, 1, 72);
+  box-shadow: 1px 1px 7px 0px rgb(83, 82, 82);
+  background-color: white;
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  border-radius: 15px;
+  transition: 0.4s ease-in-out;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container_div {
   visibility: hidden;
 }
 .container_div_visible {
-  margin-top: 60px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   height: 600px;
   visibility: visible;
-  width: 20%;
+  width: 100%;
+  gap: 20px;
 }
 
 .counter {
@@ -294,8 +302,8 @@ export default {
   visibility: hidden;
 }
 .countryFlag_visible {
-  height: 250px;
-  width: 350px;
+  height: 180px;
+  width: 330px;
   box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
   border-radius: 2px;
   border: solid white 3px;
@@ -308,20 +316,7 @@ export default {
   box-shadow: 1px 1px 4px 0px rgb(69, 64, 64) inset;
   width: auto;
 }
-.countries_names {
-  color: rgb(1, 1, 72);
-  box-shadow: 1px 1px 7px 0px rgb(83, 82, 82);
-  background-color: white;
-  width: 350px;
-  padding: 10px;
-  font-size: 17px;
-  border-radius: 15px;
-  transition: 0.4s ease-in-out;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .correct {
   background: linear-gradient(rgb(152, 253, 0), rgb(18, 200, 5));
   box-shadow: 1px 1px 3px rgb(39, 38, 38) inset, -1px 1px 3px rgb(39, 38, 38) inset;
@@ -380,8 +375,6 @@ export default {
   transform: scale(0.9);
 }
 .table_board {
-  margin-top: 30px;
-  margin-left: 10px;
   background-color: white;
   box-shadow: 2px -1px 5px black inset;
   display: flex;
@@ -392,6 +385,7 @@ export default {
   padding-bottom: 40px;
   /* border: solid 1px orange; */
   border-radius: 7px;
+  width: 100%;
 }
 .table_board h1 {
   color: white;
@@ -449,137 +443,86 @@ export default {
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
-
 @media screen and (max-width: 768px) {
-
-  .table_board {
+  .container_game {
     margin-top: 10px;
-    background-color: white;
-    box-shadow: 2px -1px 5px black inset, -2px 1px 5px black inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    height: 60px;
-    border-radius: 7px;
-    width: 360px;
-    margin-left: 7px;
   }
-  .continent {
-    color: orangered;
-    font-size: 10px;
-    height: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    /* align-content: center; */
-    font-family: poppins;
-    letter-spacing: 0px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-top: -10px;
-  }
-  .container_Gaming {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    gap: 50px;
-   
-  }
-  .container_div_visible {
-    margin-top: -70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 600px;
-    visibility: visible;
-    width: 100%;
-  }
+
   .countryFlag_visible {
-    height: 130px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
     box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
     border-radius: 2px;
     border: solid white 3px;
+    /* margin-bottom: 20px;
+  margin-top: 20px; */
     visibility: visible;
   }
-  .container_countries_names {
+  .counter {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width: 70%;
-    height: 30%;
-    margin-top: 30px;
-  }
-  .countries_names {
-    color: rgb(1, 1, 72);
-    box-shadow: 1px 1px 7px 0px rgb(83, 82, 82);
-    background-color: white;
-    width: 70%;
-    padding: 10px;
+    align-items: left;
+    justify-content: left;
     font-size: 14px;
+    color: rgb(255, 255, 255);
+    border: solid 1px white;
     border-radius: 10px;
-    transition: 0.4s ease-in-out;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .next {
-    color: rgb(117, 217, 16);
-    width: 40px;
-    height: 40px;
-    font-size: 13px;
-    border-radius: 50%;
-    border: 2px solid rgb(53, 50, 50);
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    box-shadow: 1px 1px 5px rgb(23, 23, 23);
-    transition: 0.1s ease-in-out;
-    margin-top: 20px;
-  }
-  .next:hover {
-    transform: scale(1.1);
+    background-color: transparent;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+    box-shadow: 1px 1px 5px rgb(30, 30, 30);
   }
   .container_flagAndCounter {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 10px;
+    gap: 15px;
   }
-  .counter {
+  .countryFlag_visible {
+    height: 120px;
+    width: 150px;
+    box-shadow: 1px 1px 6px 0px rgb(69, 64, 64);
+    border-radius: 2px;
+    border: solid white 3px;
+    visibility: visible;
+  }
+  .table_board {
+    background-color: white;
+    box-shadow: 2px -1px 5px black inset;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: rgb(255, 255, 255);
-    border: solid 2px white;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: transparent;
-    width: 70px;
-    height: 70px;
-    box-shadow: 1px 1px 5px rgb(30, 30, 30);
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-radius: 7px;
+    width: 90%;
+    height: 30px;
   }
-  .counter_title {
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    text-align: center;
-    font-weight: 400;
+  .continent {
+    color: orangered;
+    font-size: 10px;
+    height: 30px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
     font-family: poppins;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    font-weight: 700;
+    gap: -5px;
+    margin-top: 0px;
+  }
+  .container_div_visible {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: visible;
+    width: 100%;
+    gap: 20px;
   }
 }
 </style>

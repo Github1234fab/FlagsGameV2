@@ -34,6 +34,7 @@ body {
   -webkit-background-clip: text;
   background-image: linear-gradient(to left, orange 23%, rgb(86, 86, 242), pink);
   color: transparent;
+  text-transform: uppercase;
 }
 nav {
   width: 100%;
@@ -73,7 +74,7 @@ nav {
 
 @media screen and (max-width: 768px) {
   .header {
-    height: 120px;
+    height: 130px;
     width: 100%;
     background-color: #2e2e2e;
     display: flex;
@@ -94,5 +95,6 @@ nav {
     transform: scale() rotate();
     margin-top: -20px;
   }
+
 }
 </style>
