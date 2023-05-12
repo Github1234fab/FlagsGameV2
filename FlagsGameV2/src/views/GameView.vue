@@ -579,6 +579,7 @@ export default {
   .table_board {
     margin-top: 5px;
     box-shadow: 2px -1px 5px black inset, -2px 1px 5px black inset;
+    width: 90%;
   }
 }
 </style>

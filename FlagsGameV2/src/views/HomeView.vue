@@ -1,6 +1,5 @@
 <template>
   <div class="container_homePage">
-    
     <div class="title"></div>
     <!-- <h1>Connais-tu ce monde?</h1> -->
   </div>
@@ -15,9 +14,8 @@
 </template>
 <script>
 import axios from 'axios'
-export default{
+export default {
   data() {
-  
     return {
       flags: []
     }
@@ -60,7 +58,7 @@ button {
   height: 100px;
   width: 100px;
 }
-a{
+a {
   text-decoration: none;
 }
 
@@ -68,7 +66,7 @@ a{
   display: flex;
   height: 100vh;
   width: 100%;
-  background: url('../assets/_65af0787-f768-43b3-8750-ca3315853ea0.jpeg');
+  background: url('https://th.bing.com/th/id/OIG.2E6_i9azBQfnOWc_IDqR?pid=ImgGn');
   background-size: cover;
   position: relative;
 }
@@ -79,15 +77,13 @@ a{
   justify-content: space-around;
   height: 300px;
   margin-top: 50px;
-
 }
 
-.container_homePage h1{
- position: absolute;
+.container_homePage h1 {
+  position: absolute;
   top: 5%;
   left: 30%;
   color: white;
   font-family: oswald;
 }
-
 </style>
